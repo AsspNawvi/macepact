@@ -9,40 +9,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-
-      - name: Organize files into Maven structure
-        run: |
-          mkdir -p src/main/java/com/custommaces/commands
-          mkdir -p src/main/java/com/custommaces/listeners
-          mkdir -p src/main/java/com/custommaces/managers
-          mkdir -p src/main/resources
-
-          # Move main classes
-          mv CustomMaces.java src/main/java/com/custommaces/ 2>/dev/null || true
-          mv MaceType.java src/main/java/com/custommaces/ 2>/dev/null || true
-
-          # Move commands
-          mv GiveMaceCommand.java src/main/java/com/custommaces/commands/ 2>/dev/null || true
-          mv MaceListCommand.java src/main/java/com/custommaces/commands/ 2>/dev/null || true
-
-          # Move listeners
-          mv MaceInventoryListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceHitListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceSmashListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceKillListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceDashListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceEffectListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv GodMaceCraftListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-
-          # Move managers
-          mv MaceManager.java src/main/java/com/custommaces/managers/ 2>/dev/null || true
-
-          # Move plugin.yml to resources (pom.xml stays in root!)
-          mv plugin.yml src/main/resources/ 2>/dev/null || true
-
-      - name: Build
-        run: mvn package -DskipTests
-
+      - run: mvn package -DskipTests
       - uses: actions/upload-artifact@v4
         with:
           name: CustomMaces
