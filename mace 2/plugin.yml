@@ -1,0 +1,23 @@
+name: CustomMaces
+version: 2.0.0
+main: com.custommaces.CustomMaces
+api-version: 1.21.11
+description: 9 custom maces + God Mace for your SMP
+author: YourName
+
+commands:
+  givemace:
+    description: Give a custom mace to a player
+    usage: /givemace <player> <mace>
+    permission: custommaces.give
+  macelist:
+    description: List all available custom maces
+    usage: /macelist
+
+permissions:
+  custommaces.give:
+    description: Allows giving custom maces
+    default: op
+  custommaces.use:
+    description: Allows using custom maces
+    default: true
