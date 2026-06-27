@@ -10,9 +10,8 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Build
-        working-directory: mace plugin
         run: mvn package -DskipTests
       - uses: actions/upload-artifact@v4
         with:
           name: CustomMaces
-          path: mace plugin/target/CustomMaces-1.0.0.jar
+          path: target/CustomMaces-1.0.0.jar
