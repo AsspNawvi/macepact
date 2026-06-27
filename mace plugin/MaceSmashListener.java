@@ -94,7 +94,7 @@ public class MaceSmashListener implements Listener {
             }
         }
         world.playSound(loc, Sound.ENTITY_ELDER_GUARDIAN_HURT, 1.2f, 0.7f);
-        world.spawnParticle(Particle.WATER_SPLASH, loc, 100, 2, 0.5, 2, 0.3);
+        world.spawnParticle(Particle.SPLASH, loc, 100, 2, 0.5, 2, 0.3);
     }
 
     private void smashSoul(Player attacker, Location loc) {
