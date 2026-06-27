@@ -9,29 +9,8 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Organize files
-        working-directory: "mace plugin"
-        run: |
-          mkdir -p src/main/java/com/custommaces/listeners
-          mkdir -p src/main/java/com/custommaces/managers
-          mkdir -p src/main/java/com/custommaces/commands
-          mkdir -p src/main/resources
-          mv CustomMaces.java src/main/java/com/custommaces/ 2>/dev/null || true
-          mv MaceType.java src/main/java/com/custommaces/ 2>/dev/null || true
-          mv GodMaceCraftListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceDashListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceHitListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceHoldListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceKillListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceSmashListener.java src/main/java/com/custommaces/listeners/ 2>/dev/null || true
-          mv MaceManager.java src/main/java/com/custommaces/managers/ 2>/dev/null || true
-          mv GiveMaceCommand.java src/main/java/com/custommaces/commands/ 2>/dev/null || true
-          mv MaceListCommand.java src/main/java/com/custommaces/commands/ 2>/dev/null || true
-          mv plugin.yml src/main/resources/ 2>/dev/null || true
-      - name: Build
-        working-directory: "mace plugin"
-        run: mvn package -DskipTests
+      - run: mvn package -DskipTests
       - uses: actions/upload-artifact@v4
         with:
           name: CustomMaces
-          path: "mace plugin/target/CustomMaces-1.0.0.jar"
+          path: target/CustomMaces-1.0.0.jar
