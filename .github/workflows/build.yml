@@ -14,3 +14,21 @@ jobs:
         with:
           name: CustomMaces
           path: target/CustomMaces-1.0.0.jar
+name: Build Plugin
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Build
+        working-directory: CustomMaces
+        run: mvn package -DskipTests
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CustomMaces
+          path: CustomMaces/target/CustomMaces-1.0.0.jar
