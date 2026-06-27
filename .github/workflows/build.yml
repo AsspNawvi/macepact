@@ -37,7 +37,7 @@ jobs:
           # Move managers
           mv MaceManager.java src/main/java/com/custommaces/managers/ 2>/dev/null || true
 
-          # Move resources
+          # Move plugin.yml to resources (pom.xml stays in root!)
           mv plugin.yml src/main/resources/ 2>/dev/null || true
 
       - name: Build
