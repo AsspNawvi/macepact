@@ -15,20 +15,28 @@ jobs:
           mkdir -p project/src/main/java/com/custommaces/managers
           mkdir -p project/src/main/java/com/custommaces/commands
           mkdir -p project/src/main/resources
-          find . -name "pom.xml"                  -not -path "./project/*" -exec cp {} project/ \;
-          find . -name "plugin.yml"               -not -path "./project/*" -exec cp {} project/src/main/resources/ \;
-          find . -name "CustomMaces.java"         -exec cp {} project/src/main/java/com/custommaces/ \;
-          find . -name "MaceType.java"            -exec cp {} project/src/main/java/com/custommaces/ \;
-          find . -name "MaceManager.java"         -exec cp {} project/src/main/java/com/custommaces/managers/ \;
-          find . -name "GodMaceGUIListener.java"  -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "GodMaceCraftListener.java"-exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceAbilityListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceHitListener.java"     -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceHoldListener.java"    -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceKillListener.java"    -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceSmashListener.java"   -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "GiveMaceCommand.java"     -exec cp {} project/src/main/java/com/custommaces/commands/ \;
-          find . -name "MaceListCommand.java"     -exec cp {} project/src/main/java/com/custommaces/commands/ \;
+
+          SRC=project/src/main/java/com/custommaces
+          RES=project/src/main/resources
+
+          cp pom.xml project/
+          cp plugin.yml $RES/
+
+          cp CustomMaces.java        $SRC/
+          cp MaceType.java           $SRC/
+
+          cp MaceManager.java        $SRC/managers/
+
+          cp GodMaceGUIListener.java   $SRC/listeners/
+          cp GodMaceCraftListener.java $SRC/listeners/
+          cp MaceAbilityListener.java  $SRC/listeners/
+          cp MaceHitListener.java      $SRC/listeners/
+          cp MaceHoldListener.java     $SRC/listeners/
+          cp MaceKillListener.java     $SRC/listeners/
+          cp MaceSmashListener.java    $SRC/listeners/
+
+          cp GiveMaceCommand.java    $SRC/commands/
+          cp MaceListCommand.java    $SRC/commands/
       - name: Build
         working-directory: project
         run: mvn package -DskipTests
