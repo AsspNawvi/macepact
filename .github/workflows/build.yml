@@ -9,28 +9,26 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Debug structure
-        run: find . -not -path './.git/*' | sort
       - name: Organize files
         run: |
           mkdir -p project/src/main/java/com/custommaces/listeners
           mkdir -p project/src/main/java/com/custommaces/managers
           mkdir -p project/src/main/java/com/custommaces/commands
           mkdir -p project/src/main/resources
-          find . -name "pom.xml" -not -path "./project/*" -exec cp {} project/ \;
-          find . -name "CustomMaces.java" -exec cp {} project/src/main/java/com/custommaces/ \;
-          find . -name "MaceType.java" -exec cp {} project/src/main/java/com/custommaces/ \;
-          find . -name "GodMaceGUIListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "GodMaceCraftListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
+          find . -name "pom.xml"                  -not -path "./project/*" -exec cp {} project/ \;
+          find . -name "plugin.yml"               -not -path "./project/*" -exec cp {} project/src/main/resources/ \;
+          find . -name "CustomMaces.java"         -exec cp {} project/src/main/java/com/custommaces/ \;
+          find . -name "MaceType.java"            -exec cp {} project/src/main/java/com/custommaces/ \;
+          find . -name "MaceManager.java"         -exec cp {} project/src/main/java/com/custommaces/managers/ \;
+          find . -name "GodMaceGUIListener.java"  -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
+          find . -name "GodMaceCraftListener.java"-exec cp {} project/src/main/java/com/custommaces/listeners/ \;
           find . -name "MaceAbilityListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceHitListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceHoldListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceKillListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceSmashListener.java" -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
-          find . -name "MaceManager.java" -exec cp {} project/src/main/java/com/custommaces/managers/ \;
-          find . -name "GiveMaceCommand.java" -exec cp {} project/src/main/java/com/custommaces/commands/ \;
-          find . -name "MaceListCommand.java" -exec cp {} project/src/main/java/com/custommaces/commands/ \;
-          find . -name "plugin.yml" -not -path "./project/*" -exec cp {} project/src/main/resources/ \;
+          find . -name "MaceHitListener.java"     -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
+          find . -name "MaceHoldListener.java"    -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
+          find . -name "MaceKillListener.java"    -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
+          find . -name "MaceSmashListener.java"   -exec cp {} project/src/main/java/com/custommaces/listeners/ \;
+          find . -name "GiveMaceCommand.java"     -exec cp {} project/src/main/java/com/custommaces/commands/ \;
+          find . -name "MaceListCommand.java"     -exec cp {} project/src/main/java/com/custommaces/commands/ \;
       - name: Build
         working-directory: project
         run: mvn package -DskipTests
