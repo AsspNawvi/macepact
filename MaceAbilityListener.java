@@ -208,7 +208,7 @@ public class MaceAbilityListener implements Listener {
         double closestAngle = 0.3; // within ~17 degrees of crosshair
         Vector look = p.getLocation().getDirection();
         for (Entity e : p.getNearbyEntities(30, 30, 30)) {
-            if (e instanceof WindCharge || e instanceof EnderPearl || e instanceof Enderpearl) {
+            if (e instanceof WindCharge || e instanceof EnderPearl || e instanceof EnderPearl) {
                 Vector toEntity = e.getLocation().toVector().subtract(p.getEyeLocation().toVector()).normalize();
                 double dot = toEntity.dot(look);
                 if (dot > closestAngle) { closestAngle = dot; projectileTarget = e; }
