@@ -11,7 +11,7 @@ jobs:
           distribution: 'temurin'
       - name: Unzip and organize files
         run: |
-          unzip CustomMaces_v3.zip -d extracted/
+          unzip .github/workflows/CustomMaces_v3.zip -d extracted/
           mkdir -p project/src/main/java/com/custommaces/listeners
           mkdir -p project/src/main/java/com/custommaces/managers
           mkdir -p project/src/main/java/com/custommaces/commands
