@@ -9,28 +9,29 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Organize files
+      - name: Unzip and organize files
         run: |
+          unzip CustomMaces_v3.zip -d extracted/
           mkdir -p project/src/main/java/com/custommaces/listeners
           mkdir -p project/src/main/java/com/custommaces/managers
           mkdir -p project/src/main/java/com/custommaces/commands
           mkdir -p project/src/main/resources
           SRC=project/src/main/java/com/custommaces
           RES=project/src/main/resources
-          cp pom.xml project/
-          cp plugin.yml $RES/
-          cp CustomMaces.java $SRC/
-          cp MaceType.java $SRC/
-          cp MaceManager.java $SRC/managers/
-          cp GodMaceGUIListener.java $SRC/listeners/
-          cp GodMaceCraftListener.java $SRC/listeners/
-          cp MaceAbilityListener.java $SRC/listeners/
-          cp MaceHitListener.java $SRC/listeners/
-          cp MaceHoldListener.java $SRC/listeners/
-          cp MaceKillListener.java $SRC/listeners/
-          cp MaceSmashListener.java $SRC/listeners/
-          cp GiveMaceCommand.java $SRC/commands/
-          cp MaceListCommand.java $SRC/commands/
+          cp extracted/pom.xml project/
+          cp extracted/plugin.yml $RES/
+          cp extracted/CustomMaces.java $SRC/
+          cp extracted/MaceType.java $SRC/
+          cp extracted/MaceManager.java $SRC/managers/
+          cp extracted/GodMaceGUIListener.java $SRC/listeners/
+          cp extracted/GodMaceCraftListener.java $SRC/listeners/
+          cp extracted/MaceAbilityListener.java $SRC/listeners/
+          cp extracted/MaceHitListener.java $SRC/listeners/
+          cp extracted/MaceHoldListener.java $SRC/listeners/
+          cp extracted/MaceKillListener.java $SRC/listeners/
+          cp extracted/MaceSmashListener.java $SRC/listeners/
+          cp extracted/GiveMaceCommand.java $SRC/commands/
+          cp extracted/MaceListCommand.java $SRC/commands/
       - name: Build
         working-directory: project
         run: mvn package -DskipTests
