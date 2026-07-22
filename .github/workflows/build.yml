@@ -9,6 +9,8 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+      - name: Debug - show repo contents
+        run: find . -not -path './.git/*' | sort
       - name: Organize files
         run: |
           mkdir -p project/src/main/java/com/custommaces/listeners
@@ -17,21 +19,20 @@ jobs:
           mkdir -p project/src/main/resources
           SRC=project/src/main/java/com/custommaces
           RES=project/src/main/resources
-          F=.github/workflows
-          cp $F/pom.xml project/
-          cp $F/plugin.yml $RES/
-          cp $F/CustomMaces.java $SRC/
-          cp $F/MaceType.java $SRC/
-          cp $F/MaceManager.java $SRC/managers/
-          cp $F/GodMaceGUIListener.java $SRC/listeners/
-          cp $F/GodMaceCraftListener.java $SRC/listeners/
-          cp $F/MaceAbilityListener.java $SRC/listeners/
-          cp $F/MaceHitListener.java $SRC/listeners/
-          cp $F/MaceHoldListener.java $SRC/listeners/
-          cp $F/MaceKillListener.java $SRC/listeners/
-          cp $F/MaceSmashListener.java $SRC/listeners/
-          cp $F/GiveMaceCommand.java $SRC/commands/
-          cp $F/MaceListCommand.java $SRC/commands/
+          cp pom.xml project/
+          cp plugin.yml $RES/
+          cp CustomMaces.java $SRC/
+          cp MaceType.java $SRC/
+          cp MaceManager.java $SRC/managers/
+          cp GodMaceGUIListener.java $SRC/listeners/
+          cp GodMaceCraftListener.java $SRC/listeners/
+          cp MaceAbilityListener.java $SRC/listeners/
+          cp MaceHitListener.java $SRC/listeners/
+          cp MaceHoldListener.java $SRC/listeners/
+          cp MaceKillListener.java $SRC/listeners/
+          cp MaceSmashListener.java $SRC/listeners/
+          cp GiveMaceCommand.java $SRC/commands/
+          cp MaceListCommand.java $SRC/commands/
       - name: Build
         working-directory: project
         run: mvn package -DskipTests
