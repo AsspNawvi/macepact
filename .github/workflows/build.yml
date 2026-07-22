@@ -15,28 +15,22 @@ jobs:
           mkdir -p project/src/main/java/com/custommaces/managers
           mkdir -p project/src/main/java/com/custommaces/commands
           mkdir -p project/src/main/resources
-
           SRC=project/src/main/java/com/custommaces
           RES=project/src/main/resources
-
           cp pom.xml project/
           cp plugin.yml $RES/
-
-          cp CustomMaces.java        $SRC/
-          cp MaceType.java           $SRC/
-
-          cp MaceManager.java        $SRC/managers/
-
-          cp GodMaceGUIListener.java   $SRC/listeners/
+          cp CustomMaces.java $SRC/
+          cp MaceType.java $SRC/
+          cp MaceManager.java $SRC/managers/
+          cp GodMaceGUIListener.java $SRC/listeners/
           cp GodMaceCraftListener.java $SRC/listeners/
-          cp MaceAbilityListener.java  $SRC/listeners/
-          cp MaceHitListener.java      $SRC/listeners/
-          cp MaceHoldListener.java     $SRC/listeners/
-          cp MaceKillListener.java     $SRC/listeners/
-          cp MaceSmashListener.java    $SRC/listeners/
-
-          cp GiveMaceCommand.java    $SRC/commands/
-          cp MaceListCommand.java    $SRC/commands/
+          cp MaceAbilityListener.java $SRC/listeners/
+          cp MaceHitListener.java $SRC/listeners/
+          cp MaceHoldListener.java $SRC/listeners/
+          cp MaceKillListener.java $SRC/listeners/
+          cp MaceSmashListener.java $SRC/listeners/
+          cp GiveMaceCommand.java $SRC/commands/
+          cp MaceListCommand.java $SRC/commands/
       - name: Build
         working-directory: project
         run: mvn package -DskipTests
