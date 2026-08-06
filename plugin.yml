@@ -1,0 +1,18 @@
+name: CustomSwords
+version: 1.0.0
+main: com.customswords.CustomSwords
+api-version: '1.21'
+description: Custom netherite swords with unique abilities
+authors: [AsspNawvi]
+commands:
+  givesword:
+    description: Give a custom sword
+    usage: /givesword <type> [player]
+    permission: customswords.give
+  swordlist:
+    description: List all custom sword types
+    usage: /swordlist
+permissions:
+  customswords.give:
+    description: Allows giving custom swords
+    default: op
