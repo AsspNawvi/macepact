@@ -1,3 +1,4 @@
+cat > /mnt/user-data/outputs/build.yml << 'EOF'
 name: Build Plugin
 on: [push]
 jobs:
@@ -9,34 +10,32 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Debug - show repo contents
-        run: find . -not -path './.git/*' | sort
       - name: Organize files
         run: |
-          mkdir -p project/src/main/java/com/custommaces/listeners
-          mkdir -p project/src/main/java/com/custommaces/managers
-          mkdir -p project/src/main/java/com/custommaces/commands
+          mkdir -p project/src/main/java/com/customswords/listeners
+          mkdir -p project/src/main/java/com/customswords/managers
+          mkdir -p project/src/main/java/com/customswords/commands
           mkdir -p project/src/main/resources
-          SRC=project/src/main/java/com/custommaces
+          SRC=project/src/main/java/com/customswords
           RES=project/src/main/resources
           cp pom.xml project/
           cp plugin.yml $RES/
-          cp CustomMaces.java $SRC/
-          cp MaceType.java $SRC/
-          cp MaceManager.java $SRC/managers/
-          cp GodMaceGUIListener.java $SRC/listeners/
-          cp GodMaceCraftListener.java $SRC/listeners/
-          cp MaceAbilityListener.java $SRC/listeners/
-          cp MaceHitListener.java $SRC/listeners/
-          cp MaceHoldListener.java $SRC/listeners/
-          cp MaceKillListener.java $SRC/listeners/
-          cp MaceSmashListener.java $SRC/listeners/
-          cp GiveMaceCommand.java $SRC/commands/
-          cp MaceListCommand.java $SRC/commands/
+          cp CustomSwords.java $SRC/
+          cp SwordType.java $SRC/
+          cp SwordManager.java $SRC/managers/
+          cp SwordHoldListener.java $SRC/listeners/
+          cp SwordHitListener.java $SRC/listeners/
+          cp SwordAbilityListener.java $SRC/listeners/
+          cp SwordKillListener.java $SRC/listeners/
+          cp GodSwordGUIListener.java $SRC/listeners/
+          cp GodSwordCraftListener.java $SRC/listeners/
+          cp GiveSwordCommand.java $SRC/commands/
+          cp SwordListCommand.java $SRC/commands/
       - name: Build
         working-directory: project
         run: mvn package -DskipTests
       - uses: actions/upload-artifact@v4
         with:
-          name: CustomMaces
-          path: project/target/CustomMaces-2.0.0.jar
+          name: CustomSwords
+          path: project/target/CustomSwords-1.0.0.jar
+EOF
