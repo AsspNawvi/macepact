@@ -9,10 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
+      - name: Debug
+        run: find . -not -path './.git/*' | sort
       - name: Organize files
         run: |
           mkdir -p project/src/main/java/com/customswords/listeners
