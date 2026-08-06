@@ -15,8 +15,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Debug
-        run: find . -not -path './.git/*' | sort
       - name: Organize files
         run: |
           mkdir -p project/src/main/java/com/customswords/listeners
@@ -25,20 +23,19 @@ jobs:
           mkdir -p project/src/main/resources
           SRC=project/src/main/java/com/customswords
           RES=project/src/main/resources
-          F=.github/workflows
-          cp $F/pom.xml project/
-          cp $F/plugin.yml $RES/
-          cp $F/CustomSwords.java $SRC/
-          cp $F/SwordType.java $SRC/
-          cp $F/SwordManager.java $SRC/managers/
-          cp $F/SwordHoldListener.java $SRC/listeners/
-          cp $F/SwordHitListener.java $SRC/listeners/
-          cp $F/SwordAbilityListener.java $SRC/listeners/
-          cp $F/SwordKillListener.java $SRC/listeners/
-          cp $F/GodSwordGUIListener.java $SRC/listeners/
-          cp $F/GodSwordCraftListener.java $SRC/listeners/
-          cp $F/GiveSwordCommand.java $SRC/commands/
-          cp $F/SwordListCommand.java $SRC/commands/
+          cp pom.xml project/
+          cp plugin.yml $RES/
+          cp CustomSwords.java $SRC/
+          cp SwordType.java $SRC/
+          cp SwordManager.java $SRC/managers/
+          cp SwordHoldListener.java $SRC/listeners/
+          cp SwordHitListener.java $SRC/listeners/
+          cp SwordAbilityListener.java $SRC/listeners/
+          cp SwordKillListener.java $SRC/listeners/
+          cp GodSwordGUIListener.java $SRC/listeners/
+          cp GodSwordCraftListener.java $SRC/listeners/
+          cp GiveSwordCommand.java $SRC/commands/
+          cp SwordListCommand.java $SRC/commands/
       - name: Build
         working-directory: project
         run: mvn package -DskipTests
