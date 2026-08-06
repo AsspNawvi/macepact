@@ -38,3 +38,4 @@ jobs:
         with:
           name: CustomSwords
           path: project/target/CustomSwords-1.0.0.jar
+          
